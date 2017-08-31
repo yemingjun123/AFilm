@@ -45,7 +45,4 @@ export default StyleSheet.create({
     fontFamily: 'PingFang SC',
     color: '#ff0000',
   }
-  loading: {
-    
-  }
 });
