@@ -17,6 +17,7 @@ import {
 const IN_THEATER_URL = 'https://api.douban.com/v2/movie/in_theaters';
 
 export default React.createClass({
+
   getInitialState() {
     this.fetchData();
     return {
@@ -33,7 +34,21 @@ export default React.createClass({
           movies: this.state.movies.cloneWithRows(responseObject.subjects),
           loading: false,
         })
-      })
+      }).
+  },
+
+  renderMovieList(movie) {
+    return (
+      <View style={styles.item}>
+        <View style={styles.itemImg}>
+            <Image source={{uri: 'https://img3.doubanio.com/img/celebrity/medium/1387002546.12.jpg'}} style={styles.sm_img} />
+        </View>
+        <View style={styles.itemContent}>
+          <Text style={styles.itemText}>{movie.title}</Text>
+          <Text style={styles.itemText}>{movie.rating.average}</Text>
+        </View>
+      </View>
+    )
   },
 
   render() {
@@ -49,9 +64,7 @@ export default React.createClass({
       <View style={styles.container}>
           <ListView
             dataSource={this.state.movies}
-            renderRow={
-              movie => <View style={styles.item}><Text style={styles.itemText}>{movie.title}</Text></View>
-            }
+            renderRow={this.renderMovieList}
           />
       </View>
     );
@@ -65,13 +78,28 @@ let styles = StyleSheet.create({
   },
   item: {
     flex: 1,
-    margin: 6,
+    flexDirection: 'row',
+    // marginBottom: 6,
+    // paddingBottom: 6,
     borderColor: '#eae123',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     height: 100,
   },
+  sm_img: {
+    width: 80,
+    height: 80,
+    margin: 0,
+  },
+  itemContent: {
+    flex: 1,
+    marginLeft: 10,
+    backgroundColor: 'blue',
+
+  },
+
   itemText: {
     fontSize: 20,
     textAlign: 'center',
+    marginTop: 10,
   },
 });

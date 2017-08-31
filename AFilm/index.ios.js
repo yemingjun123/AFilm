@@ -6,7 +6,9 @@
 
 import React, { Component } from 'react';
 
-import Base5 from './app/base/base5.js';
+// import Base5 from './app/base/base5.js';
+// import Base6 from './app/base/base6.js';
+import MovieList from './app/ComponentsOS/MovieList.js';
 
 import {
   AppRegistry,
@@ -15,7 +17,7 @@ import {
 export default class AFilm extends Component {
   render() {
     return (
-      <Base5 />
+      <MovieList />
     );
   }
 }
