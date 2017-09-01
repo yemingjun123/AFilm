@@ -16,8 +16,9 @@ import {
 } from 'react-native';
 
 /* styles */
-import styles from '../Styles/Main';
-import icons  from '../Resource/Icons';
+import styles      from '../Styles/Main';
+import icons       from '../Resource/Icons';
+import MovieDetail from './MovieDetail'
 
 class  MovieList extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class  MovieList extends React.Component {
       var img_url = icons.none;
     }
     return (
-      <TouchableHighlight onPress={() => this.onPressButton(movie.title)} underlayColor='rgba(24,34,34,0.1)'>
+      <TouchableHighlight onPress={() => this.onPressButton(movie)} underlayColor='rgba(24,34,34,0.1)'>
         <View style={styles.item}>
           <View style={styles.itemImg}>
             <Image source={{uri: img_url}} style={styles.sm_img} />
@@ -64,8 +65,12 @@ class  MovieList extends React.Component {
     )
   }
 
-  onPressButton(title) {
-    console.log(`${title} 被点击了`);
+  onPressButton(movie) {
+    this.props.navigator.push({
+      title: movie.title,
+      component: MovieDetail,
+      passProps: {movie}
+    })
   }
 
   render() {
