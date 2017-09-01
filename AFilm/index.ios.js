@@ -6,18 +6,51 @@
 
 import React, { Component } from 'react';
 
-// import Base5 from './app/base/base5.js';
-// import Base6 from './app/base/base6.js';
-import MovieList from './app/ComponentsOS/MovieList.js';
+import ComingSoon from './app/ComponentsOS/ComingSoon.js';
+import Featured   from './app/ComponentsOS/Featured.js'
+import icons      from './app/Resource/Icons';
 
 import {
   AppRegistry,
+  TabBarIOS,
 } from 'react-native';
 
 export default class AFilm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabBar: 'Featured'
+    };
+  }
+
   render() {
     return (
-      <MovieList />
+      <TabBarIOS tintColor='green' unselectedTintColor='gray'>
+        <TabBarIOS.Item
+          title='正在热映'
+          icon={{uri: icons.star, scale: 4.6}}
+          selected={this.state.tabBar === 'Featured'}
+          onPress={() =>{
+            this.setState({
+              tabBar: 'Featured'
+            })
+          }}
+        >
+          <Featured />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title='即将上映'
+          icon={{uri: icons.calendar, scale: 4.6}}
+          selected={this.state.tabBar === 'ComingSoon'}
+          onPress={() =>{
+            this.setState({
+              tabBar: 'ComingSoon'
+            })
+          }}
+        >
+          <ComingSoon />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     );
   }
 }

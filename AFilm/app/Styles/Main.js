@@ -7,7 +7,6 @@ let { StyleSheet } = React;
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
   },
   item: {
     flex: 1,
@@ -44,5 +43,14 @@ export default StyleSheet.create({
     fontSize: 14,
     fontFamily: 'PingFang SC',
     color: '#ff0000',
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  level1Container: {
+     marginTop: 64,
+     marginBottom: 49,
   }
 });

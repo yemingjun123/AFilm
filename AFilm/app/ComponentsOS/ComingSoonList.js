@@ -1,6 +1,3 @@
-/*
-* MovieList
-*/
 
 'use strict';
 
@@ -19,10 +16,10 @@ import {
 import styles from '../Styles/Main';
 import icons  from '../Resource/Icons';
 
-class  MovieList extends React.Component {
+class  ComingSoonList extends React.Component {
   constructor(props) {
     super(props);
-    const IN_THEATER_URL = 'https://api.douban.com/v2/movie/in_theaters';
+    const IN_THEATER_URL = 'https://api.douban.com/v2/movie/coming_soon';
     this.fetchData(IN_THEATER_URL);
     this.state = {
       movies: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
@@ -87,4 +84,4 @@ class  MovieList extends React.Component {
   }
 }
 
-export { MovieList as default };
+export { ComingSoonList as default};
